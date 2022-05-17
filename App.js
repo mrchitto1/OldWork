@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,25 +13,61 @@ import Card from '../OldWork/Component/Card';
 
 const App = props => {
   let Data = [
-    {Status: 'open', Post: 'Apple MAC 2022 repairing', Name: 'Ilyass'},
+    {
+      Status: 'open',
+      Post: 'Apple MAC 2022 repairing',
+      Name: 'Ilyass',
+    },
     {
       Status: 'in process',
       Post: 'Dell Model T1000 refurbished',
       Name: 'Geendi',
     },
-    {Status: 'delivered', Post: 'Lenovo Model F10800 Selling', Name: 'Humza'},
-    {Status: 'received', Post: 'HP Model M2000 Purchased', Name: 'Usman'},
-    {Status: 'open', Post: 'ASUS Model P5000 repair', Name: 'Asfand'},
+    {
+      Status: 'delivered',
+      Post: 'Lenovo Model F10800 Selling',
+      Name: 'Humza',
+    },
+    {
+      Status: 'received',
+      Post: 'HP Model M2000 Purchased',
+      Name: 'Usman',
+    },
+    {
+      Status: 'open',
+      Post: 'ASUS Model P5000 repair',
+      Name: 'Asfand',
+    },
   ];
+
+  const [dataArray, setDataArray] = useState(Data);
+  const [count, setCount] = useState(0);
+  const [countTwo, setCountTwo] = useState(0);
+  
+  useEffect(() => {
+    
+  }, [count, countTwo]);
+
+  const DataAdd = () => {
+    let newArray = dataArray;
+    newArray.unshift({Name: 'Usman', Post: 'HI USMAN', Status: 'HI STATUS'});
+    setDataArray(newArray);
+    setCount(count + 1);
+  };
+
+  const DataRemove = () => {
+    let newArray = dataArray;
+    newArray.shift();
+    setDataArray(newArray);
+    setCountTwo(countTwo + 1);
+  };
 
   return (
     <View style={styles.Container}>
       <View style={styles.TopContainer}>
         <View>
           <TouchableOpacity
-            onPress={() => {
-              Alert.alert('My name is +');
-            }}
+            onPress={DataAdd}
             style={{
               borderColor: 'black',
               borderWidth: 1,
@@ -51,9 +87,7 @@ const App = props => {
         </View>
         <View>
           <TouchableOpacity
-            onPress={() => {
-              Alert.alert('My name is -');
-            }}
+            onPress={DataRemove}
             style={{
               borderColor: 'black',
               borderWidth: 1,
@@ -69,31 +103,10 @@ const App = props => {
           </TouchableOpacity>
         </View>
       </View>
-      <View
-        style={{
-          backgroundColor: 'red',
-          height: 100,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        {/* <TouchableOpacity onPress={() => {Alert.alert('hi')}}>
-  <Text style={{fontSize: 100}}>Usman</Text>
-  </TouchableOpacity>
-  */}
-
-        <Button
-          onPress={() => {
-            Alert.alert('Hi');
-          }}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      </View>
       <View style={styles.BottomContainer}>
         <SafeAreaView style={{width: '100%', marginLeft: 10}}>
           <ScrollView>
-            <Card response={Data} />
+            <Card response={dataArray} />
           </ScrollView>
         </SafeAreaView>
       </View>

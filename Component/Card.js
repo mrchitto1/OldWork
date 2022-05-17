@@ -6,7 +6,6 @@ const Card = props => {
   //   const [post, setPost] = useState('');
   //   const [name, setName] = useState('');
   let array = props.response;
-  console.log(array);
   return array.map(res => {
     return (
       <View style={styles.Container}>
