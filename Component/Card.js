@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 const Card = props => {
-  console.log(props.response);
+  //   const [status, setStatus] = useState('');
+  //   const [post, setPost] = useState('');
+  //   const [name, setName] = useState('');
   let array = props.response;
-
-  return (
-    <View style={styles.Container}>
-      <Text style={styles.StatusTextStyling}>Ordered Status: open</Text>
-      <Text style={styles.PostTextStyling}>Usman</Text>
-      <Text style={styles.NameTextStyling}>Ordered by: Usman</Text>
-    </View>
-  );
+  console.log(array);
+  return array.map(res => {
+    return (
+      <View style={styles.Container}>
+        <Text style={styles.StatusTextStyling}>
+          Ordered Status: {res.Status}
+        </Text>
+        <Text style={styles.PostTextStyling}>{res.Post}</Text>
+        <Text style={styles.NameTextStyling}>Ordered by: {res.Name}</Text>
+      </View>
+    );
+  });
 };
 
 const styles = StyleSheet.create({

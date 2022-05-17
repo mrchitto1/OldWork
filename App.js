@@ -7,6 +7,7 @@ import {
   ScrollView,
   SafeAreaView,
   Alert,
+  Button,
 } from 'react-native';
 import Card from '../OldWork/Component/Card';
 
@@ -20,6 +21,7 @@ const App = props => {
     },
     {Status: 'delivered', Post: 'Lenovo Model F10800 Selling', Name: 'Humza'},
     {Status: 'received', Post: 'HP Model M2000 Purchased', Name: 'Usman'},
+    {Status: 'open', Post: 'ASUS Model P5000 repair', Name: 'Asfand'},
   ];
 
   return (
@@ -39,7 +41,7 @@ const App = props => {
               backgroundColor: '#5cff87',
               borderRadius: 10,
               paddingTop: 3,
-              paddingRight: 2
+              paddingRight: 2,
             }}>
             <Text style={styles.textStyling1}>+</Text>
           </TouchableOpacity>
@@ -61,14 +63,33 @@ const App = props => {
               backgroundColor: '#ff5c69',
               borderRadius: 10,
               paddingTop: 3,
-              paddingRight: 2
-            }}
-            >
+              paddingRight: 2,
+            }}>
             <Text style={styles.textStyling1}>-</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <View
+        style={{
+          backgroundColor: 'red',
+          height: 100,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        {/* <TouchableOpacity onPress={() => {Alert.alert('hi')}}>
+  <Text style={{fontSize: 100}}>Usman</Text>
+  </TouchableOpacity>
+  */}
 
+        <Button
+          onPress={() => {
+            Alert.alert('Hi');
+          }}
+          title="Learn More"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
+      </View>
       <View style={styles.BottomContainer}>
         <SafeAreaView style={{width: '100%', marginLeft: 10}}>
           <ScrollView>
@@ -91,7 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 25,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   BottomContainer: {
     backgroundColor: '#e3e3e3',
